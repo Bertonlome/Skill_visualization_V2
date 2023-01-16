@@ -13,6 +13,7 @@ namespace Skill_visualization
         public DateTime DateSave { get; set; }
         public string Name { get; set; }
         public string Resume { get; set; }
+        public string Service { get; set; }
 
        // [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Project> Projects { get; set; }
@@ -43,4 +44,14 @@ namespace Skill_visualization
         public string Description { get; set; }
     }
 
+    public enum Service
+    {
+        Estia_Tech,
+        Estia_Recherche,
+        CompositAdour,
+        Addimadour,
+        Estia_Entreprendre,
+        Scolarité,
+        Formation,
+    }
 }

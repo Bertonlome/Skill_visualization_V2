@@ -9,35 +9,44 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="collabNameInput" HorizontalAlignment="Left" Margin="256,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775"/>
-        <Button x:Name="buttonCollab" Content="Ajouter Collaborateur" Margin="232,415,0,0" VerticalAlignment="Top" Click="AddCollab"/>
-        <ListView Name="Output" Margin="404,462,404,10">
+        <TextBox x:Name="collabNameInput" HorizontalAlignment="Left" Margin="246,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775" Width="250"/>
+        <Button x:Name="buttonCollab" Content="Ajouter Collaborateur" Margin="294,325,0,0" VerticalAlignment="Top" Click="AddCollab"/>
+        <ListView Name="Output" Margin="45,407,62,72">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Name="buttonProject" Content="Ajouter Projet" Margin="0,420,0,0" VerticalAlignment="Top" Click="AddProject" HorizontalAlignment="Center"/>
-        <Button x:Name="buttonSkill" Content="Ajouter Compétence" Margin="1124,420,0,0" VerticalAlignment="Top" Click="AddSkill"/>
-        <TextBox x:Name="collabResumeInput" HorizontalAlignment="Left" Margin="256,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775"/>
-        <TextBox x:Name="collabProjectInput" HorizontalAlignment="Left" Margin="256,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775"/>
-        <TextBox x:Name="collabSkillInput" HorizontalAlignment="Left" Margin="256,317,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775"/>
-        <TextBox x:Name="projectNameInput" HorizontalAlignment="Center" Margin="0,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324"/>
-        <TextBox x:Name="projectDescInput" HorizontalAlignment="Center" Margin="0,317,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324"/>
-        <TextBox x:Name="skillNameInput" HorizontalAlignment="Left" Margin="1147,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324"/>
-        <TextBox x:Name="skillDescInput" HorizontalAlignment="Left" Margin="1148,317,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324"/>
-        <TextBlock HorizontalAlignment="Left" Margin="267,67,0,0" TextWrapping="Wrap" Text="Collaborateur" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Center" Margin="0,67,0,0" TextWrapping="Wrap" Text="Projet" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1162,76,0,0" TextWrapping="Wrap" Text="Compétence" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="159,117,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="159,176,0,0" TextWrapping="Wrap" Text="CV résumé" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="159,251,0,0" TextWrapping="Wrap" Text="Projet travaillé" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="159,322,0,0" TextWrapping="Wrap" Text="Compétences" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="628,255,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="593,322,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1083,253,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1063,322,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
+        <Button x:Name="buttonProject" Content="Ajouter Projet" Margin="779,325,0,0" VerticalAlignment="Top" Click="AddProject"/>
+        <Button x:Name="buttonSkill" Content="Ajouter Compétence" Margin="1240,325,0,0" VerticalAlignment="Top" Click="AddSkill"/>
+        <TextBox x:Name="collabResumeInput" HorizontalAlignment="Left" Margin="246,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775" Width="250" Height="75"/>
+        <TextBox x:Name="collabSkillInput" HorizontalAlignment="Left" Margin="246,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.495,0.775" Width="250"/>
+        <TextBox x:Name="projectNameInput" HorizontalAlignment="Left" Margin="706,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="250"/>
+        <TextBox x:Name="projectDescInput" HorizontalAlignment="Left" Margin="708,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Height="74" Width="248"/>
+        <TextBox x:Name="skillNameInput" HorizontalAlignment="Left" Margin="1188,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="250"/>
+        <TextBox x:Name="skillDescInput" HorizontalAlignment="Left" Margin="1190,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="248"/>
+        <TextBlock HorizontalAlignment="Left" Margin="326,80,0,0" TextWrapping="Wrap" Text="Collaborateur" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBlock HorizontalAlignment="Left" Margin="811,80,0,0" TextWrapping="Wrap" Text="Projet" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1272,80,0,0" TextWrapping="Wrap" Text="Compétence" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="201,115,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="165,183,0,0" TextWrapping="Wrap" Text="CV résumé" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="147,252,0,0" TextWrapping="Wrap" Text="Compétences" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="663,117,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="623,183,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1145,124,0,0" TextWrapping="Wrap" Text="Nom" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1105,172,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
+        <TextBox x:Name="ProjectCollabName" HorizontalAlignment="Left" Margin="706,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="250"/>
+        <TextBlock HorizontalAlignment="Left" Margin="546,252,0,0" TextWrapping="Wrap" Text="Nom d'un collaborateur" VerticalAlignment="Top"/>
+        <TextBox x:Name="skillCollabInput" HorizontalAlignment="Left" Margin="1190,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="248"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1091,224,0,0" TextWrapping="Wrap" Text="Collaborateur" VerticalAlignment="Top"/>
+        <TextBox x:Name="skillProjectInput" HorizontalAlignment="Left" Margin="1190,266,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="2.8,0.324" Width="248"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1139,273,0,0" TextWrapping="Wrap" Text="Projet" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Outil de visualisation des compétences ESTIA" VerticalAlignment="Top" Height="50" Width="1119" FontWeight="Bold" FontSize="36" Margin="45,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="45,52,0,0" TextWrapping="Wrap" Text="Formulaire d'entrée : " VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="45,369,0,0" TextWrapping="Wrap" Text="Infos : " VerticalAlignment="Top" Width="1393"/>
+        <Button Content="Visualisation du nuage de compétence" Margin="0,958,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="500" Click="Button_Click"/>
+
     </Grid>
 
 

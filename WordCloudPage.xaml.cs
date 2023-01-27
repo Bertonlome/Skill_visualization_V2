@@ -35,7 +35,13 @@ namespace Skill_visualization
         {
             this.InitializeComponent();
 
-            WebViewA.Navigate(new Uri("https://quickchart.io/wordcloud?text=To be or not to be, that is the question"));
+            List<String> skillsList = DataAccess.GetAllSkillsList();
+            string aggregate = "";
+            foreach(string skill in skillsList)
+            {
+                aggregate += skill + " ";
+            }
+            WebViewA.Navigate(new Uri("https://quickchart.io/wordcloud?text=" + aggregate));
             /*
             var frequencies = new Dictionary<string, int>
             {

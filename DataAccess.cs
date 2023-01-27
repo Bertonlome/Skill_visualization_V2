@@ -125,6 +125,52 @@ namespace Skill_visualization
             }
         }
 
+        public static List<string> GetAllSkillsList()
+        {
+            Dictionary<int, string> skillId = new Dictionary<int, string>();
+            List<string> skillList = new List<string>();
+            List<int> skillsIdList = new List<int>();
+
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "sqliteSample.db");
+            using (SqliteConnection db =
+                new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT ID, Name from Skill", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    skillId.Add(query.GetInt32(0), query.GetString(1));
+                }
+
+                selectCommand = new SqliteCommand("SELECT IDSkill from T_Skills_Collabs", db);
+
+                query = selectCommand.ExecuteReader();
+                while(query.Read())
+                {
+                    skillsIdList.Add(query.GetInt32(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT IDSkill FROM T_Projects_Skills", db);
+
+                while(query.Read())
+                {
+                    skillsIdList.Add(query.GetInt32(0));
+                }
+
+            }
+            foreach(int id in skillsIdList)
+            {
+                skillList.Add(skillId[id]);
+            }
+            return skillList;
+        }
+
+
         public static int GetCollabByName(string name)
         {
             List<int> entries = new List<int>();

@@ -55,24 +55,24 @@ namespace Skill_visualization
                 createTable.ExecuteReader();
 
                 tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS T_Skills_Collabs (IDCollab INT NOT NULL REFERENCES Collab(ID)," +
-                    "IDSkill INT NOT NULL REFERENCES Skill(ID))";
+                    "EXISTS T_Skills_Collabs (IDCollab INT NOT NULL REFERENCES Collab(ID) ON DELETE CASCADE," +
+                    "IDSkill INT NOT NULL REFERENCES Skill(ID) ON DELETE CASCADE)";
 
                 createTable = new SqliteCommand(tableCommand, db);
 
                 createTable.ExecuteReader();
 
                 tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS T_Projects_Collabs (IDCollab INT NOT NULL REFERENCES Collab(ID)," +
-                    "IDProject INT NOT NULL REFERENCES Project(ID))";
+                    "EXISTS T_Projects_Collabs (IDCollab INT NOT NULL REFERENCES Collab(ID) ON DELETE CASCADE," +
+                    "IDProject INT NOT NULL REFERENCES Project(ID) ON DELETE CASCADE)";
 
                 createTable = new SqliteCommand(tableCommand, db);
 
                 createTable.ExecuteReader();
 
                 tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS T_Projects_Skills (IDProject INT NOT NULL REFERENCES Project(ID)," +
-                    "IDSkill INT NOT NULL REFERENCES Skill(ID))";
+                    "EXISTS T_Projects_Skills (IDProject INT NOT NULL REFERENCES Project(ID) ON DELETE CASCADE," +
+                    "IDSkill INT NOT NULL REFERENCES Skill(ID) ON DELETE CASCADE)";
 
                 createTable = new SqliteCommand(tableCommand, db);
 
@@ -444,13 +444,15 @@ namespace Skill_visualization
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
 
+                    if (projectExist(myProject.Name) == false)
+                    {
+                        // Use parameterized query to prevent SQL injection attacks
+                        insertCommand.CommandText = "INSERT INTO Project VALUES (NULL, @nameEntry, @descEntry);";
+                        insertCommand.Parameters.AddWithValue("@nameEntry", myProject.Name);
+                        insertCommand.Parameters.AddWithValue("@descEntry", myProject.Description);
 
-                    // Use parameterized query to prevent SQL injection attacks
-                    insertCommand.CommandText = "INSERT INTO Project VALUES (NULL, @nameEntry, @descEntry);";
-                    insertCommand.Parameters.AddWithValue("@nameEntry", myProject.Name);
-                    insertCommand.Parameters.AddWithValue("@descEntry", myProject.Description);
-
-                    insertCommand.ExecuteReader();
+                        insertCommand.ExecuteReader();
+                    }
 
                     int projectId = GetProjectByName(myProject.Name);
 
@@ -484,13 +486,15 @@ namespace Skill_visualization
                     SqliteCommand insertCommand = new SqliteCommand();
                     insertCommand.Connection = db;
 
-                    // Use parameterized query to prevent SQL injection attacks
-                    insertCommand.CommandText = "INSERT INTO Skill VALUES (NULL, @nameEntry, @descEntry);";
-                    insertCommand.Parameters.AddWithValue("@nameEntry", mySkill.Name);
-                    insertCommand.Parameters.AddWithValue("@descEntry", mySkill.Description);
+                    if (SkillExist(mySkill.Name) == false)
+                    {
+                        // Use parameterized query to prevent SQL injection attacks
+                        insertCommand.CommandText = "INSERT INTO Skill VALUES (NULL, @nameEntry, @descEntry);";
+                        insertCommand.Parameters.AddWithValue("@nameEntry", mySkill.Name);
+                        insertCommand.Parameters.AddWithValue("@descEntry", mySkill.Description);
 
-
-                    insertCommand.ExecuteReader();
+                        insertCommand.ExecuteReader();
+                    }
                     int skillId = GetSkillByName(mySkill.Name);
                     //FIN
                     for (int i = 0; i < collabName.Length; i++)
@@ -525,6 +529,24 @@ namespace Skill_visualization
                 }
 
             }
+
+        }
+
+        public static void SuppCollab(string collabName)
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "sqliteSample.db");
+            using (SqliteConnection db =
+                new SqliteConnection($"Filename={dbpath}"))
+                {
+                    db.Open();
+
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+
+                    insertCommand.CommandText = "DELETE FROM Collab WHERE Name = @collabName";
+                    insertCommand.Parameters.AddWithValue("@collabName", collabName);
+                    insertCommand.ExecuteReader();
+                }
 
         }
 

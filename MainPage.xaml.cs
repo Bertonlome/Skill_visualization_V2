@@ -87,9 +87,19 @@ namespace Skill_visualization
 
         }
 
+        private void SuppCollab(object sender, RoutedEventArgs e)
+        {
+            DataAccess.SuppCollab(suppCollabInput.Text);
+
+            Output.ItemsSource = DataAccess.GetCollabList();
+
+            suppCollabInput.Text = "";
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(WordCloudPage));
         }
+
     }
 }
